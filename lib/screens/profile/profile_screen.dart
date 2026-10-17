@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import '../../widgets/placeholder_screen.dart';
+
+/// User profile screen.
+/// Placeholder — full implementation in Phase 3.
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const PlaceholderScreen(
+      title: 'Profile',
+      icon: Icons.person_rounded,
+      subtitle: 'User profile & settings — Phase 3',
+    );
+  }
+}
