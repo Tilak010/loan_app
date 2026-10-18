@@ -111,18 +111,30 @@ class _LoginScreenState extends State<LoginScreen> {
     final isHindi = context.watch<AppProvider>().isHindi;
     final auth = context.watch<AuthProvider>();
 
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: SafeArea(
-        top: false,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              physics: const ClampingScrollPhysics(),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
+    return PopScope(
+      canPop: !_isOtpScreen,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        if (_isOtpScreen) {
+          setState(() {
+            _isOtpScreen = false;
+            _otpError = null;
+          });
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppTheme.background,
+        body: SafeArea(
+          top: false,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                physics: const ClampingScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
                 child: IntrinsicHeight(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -156,8 +168,9 @@ class _LoginScreenState extends State<LoginScreen> {
           },
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
   /// Dark navy blue title area
   Widget _buildHeader(BuildContext context, bool isHindi) {

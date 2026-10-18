@@ -87,9 +87,62 @@ class Validators {
     if (value == null || value.isEmpty) {
       return 'Please enter your monthly income';
     }
-    final amount = double.tryParse(value.replaceAll(',', ''));
+    final amount = double.tryParse(value.replaceAll(',', '').trim());
     if (amount == null || amount <= 0) {
       return 'Please enter a valid income amount';
+    }
+    return null;
+  }
+
+  /// Validates monthly sales / turnover for business users.
+  static String? sales(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your monthly sales / turnover';
+    }
+    final amount = double.tryParse(value.replaceAll(',', '').trim());
+    if (amount == null || amount <= 0) {
+      return 'Please enter a valid sales amount';
+    }
+    return null;
+  }
+
+  /// Validates Aadhaar last 4 digits (exactly 4 digits).
+  static String? aadhaarLastFour(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter the last 4 digits of Aadhaar';
+    }
+    if (!RegExp(r'^\d{4}$').hasMatch(value.trim())) {
+      return 'Must be exactly 4 digits';
+    }
+    return null;
+  }
+
+  /// Validates Date of Birth (must be at least 18 years old).
+  static String? dob(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter or select your Date of Birth';
+    }
+    final parts = value.split('/');
+    if (parts.length != 3) {
+      return 'Enter date in DD/MM/YYYY format';
+    }
+    final day = int.tryParse(parts[0]);
+    final month = int.tryParse(parts[1]);
+    final year = int.tryParse(parts[2]);
+    if (day == null || month == null || year == null) {
+      return 'Invalid date of birth';
+    }
+    if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1920) {
+      return 'Please enter a valid date of birth';
+    }
+    final dobDate = DateTime(year, month, day);
+    final now = DateTime.now();
+    final age = now.year - dobDate.year - ((now.month < dobDate.month || (now.month == dobDate.month && now.day < dobDate.day)) ? 1 : 0);
+    if (age < 18) {
+      return 'Applicant must be at least 18 years old';
+    }
+    if (age > 75) {
+      return 'Applicant must be under 75 years old';
     }
     return null;
   }

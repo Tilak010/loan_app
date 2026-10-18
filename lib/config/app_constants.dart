@@ -115,31 +115,67 @@ class AppConstants {
   static const String statusRejected = 'Rejected';
   static const String statusClosed = 'Closed';
 
-  // ─── Lending Partner ──────────────────────────────────────────
+  // ─── Lending Partner & Regulatory Notices ─────────────────────
   static const String proposedLendingPartner =
       'Proposed Lending Partner: To Be Confirmed';
   static const String proposedLendingPartnerNote =
-      'Lending partner branding will be updated upon NBFC partnership authorization.';
+      'Diksha Finance is currently a technology demonstration prototype. '
+      'Neither Diksha Finance nor any proposed lending partner is claimed '
+      'to be an RBI-registered NBFC or bank for active lending operations within this demo. '
+      'All formal regulatory and partner credentials will be disclosed upon commercial authorization.';
 
-  // ─── Company Info (Fictional) ──────────────────────────────────
-  static const String companyAddress =
-      'Demo Office, 123 Finance Street,\nBKC, Mumbai - 400051\nMaharashtra, India';
-  static const String companyEmail = 'info@dikshafinance.demo';
-  static const String companyPhone = '+91 22 1234 5678';
-  static const String companyWebsite = 'www.dikshafinance.demo';
+  // ─── Contact Us Fields (Structured Placeholders — No Invented Details) ───
+  static const String contactBusinessName = 'Diksha Finance';
+  static const String contactBusinessStatus = 'Demonstration Prototype';
+  static const String contactOfficeAddress =
+      '[Registered / Corporate Office Address to be updated upon operational setup]';
+  static const String contactEmail =
+      '[Official contact email to be updated upon partner launch]';
+  static const String contactPhone =
+      '[Support phone line to be configured upon commercial deployment]';
+  static const String contactWebsite =
+      '[Official website URL to be announced]';
 
-  static const String grievanceOfficerName = 'Mr. Demo Officer';
-  static const String grievanceOfficerEmail = 'grievance@dikshafinance.demo';
-  static const String grievanceOfficerPhone = '+91 22 8765 4321';
+  // Backwards-compatible aliases
+  static const String companyAddress = contactOfficeAddress;
+  static const String companyEmail = contactEmail;
+  static const String companyPhone = contactPhone;
+  static const String companyWebsite = contactWebsite;
 
-  // ─── About Us Text ─────────────────────────────────────────────
+  // ─── Grievance Redressal (Structured Placeholders — No Invented Details) ─
+  static const String grievanceOfficerName =
+      '[Grievance Officer Name - To be appointed upon formal launch]';
+  static const String grievanceOfficerDesignation =
+      'Grievance Redressal / Nodal Officer';
+  static const String grievanceOfficerEmail =
+      '[Grievance Email - To be designated]';
+  static const String grievanceOfficerPhone =
+      '[Grievance Helpline - To be configured]';
+
+  // Escalation Process steps
+  static const String grievanceEscalationLevel1Title = 'Level 1: Customer Support Helpdesk';
+  static const String grievanceEscalationLevel1Desc =
+      'Borrowers submit inquiries or operational issues via designated support channels. Initial response target is within 48 to 72 business hours upon commercial rollout.';
+
+  static const String grievanceEscalationLevel2Title = 'Level 2: Grievance Redressal Officer';
+  static const String grievanceEscalationLevel2Desc =
+      'If the complaint is not redressed within 7 business days or the resolution is unsatisfactory, the matter escalates directly to the designated Grievance Officer for formal review.';
+
+  static const String grievanceEscalationLevel3Title = 'Level 3: Regulatory Escalation / Ombudsman';
+  static const String grievanceEscalationLevel3Desc =
+      'If unresolved after 30 business days, borrowers may approach the statutory Reserve Bank of India (RBI) Ombudsman mechanism or regulatory redressal portal of the partner regulated entity once authorized.';
+
+  // ─── About Us Content ──────────────────────────────────────────
   static const String aboutUsText =
-      'Diksha Finance is a demonstration lending application designed to '
-      'showcase a proposed digital loan origination workflow for NBFC '
-      'lending partners.\n\n'
-      'This application illustrates the end-to-end borrower journey — '
-      'from loan application and KYC verification to loan approval and '
-      'repayment tracking — using modern mobile UI/UX patterns.\n\n'
-      'All data shown is illustrative. No real financial transactions '
-      'are processed through this application.';
+      'Diksha Finance is currently a demonstration application designed to '
+      'showcase a proposed digital loan application journey.\n\n'
+      'This technology prototype provides a comprehensive walkthrough of a '
+      'modern digital lending flow — including interactive loan amount selection, '
+      'real-time EMI simulation, simulated applicant profiling, mock KYC verification, '
+      'illustrative Key Fact Statement (KFS) generation, simulated loan sanction, and '
+      'repayment tracking.\n\n'
+      'Important Notice: Diksha Finance is strictly a demonstration prototype. '
+      'The application does not disburse real credit, does not collect or process live banking '
+      'transactions, and makes no claim of RBI registration or regulated financial lending status.';
 }
+

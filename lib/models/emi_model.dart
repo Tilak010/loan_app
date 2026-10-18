@@ -20,12 +20,16 @@ class EmiModel {
   double get monthlyRate => annualRate / 12 / 100;
 
   /// Monthly EMI amount.
+  /// Safely handles zero interest rate: EMI = principal / tenureMonths
   double get emi {
-    if (monthlyRate == 0) return principal / tenureMonths;
+    if (tenureMonths <= 0) return 0;
+    if (monthlyRate <= 0) return principal / tenureMonths;
     final r = monthlyRate;
     final n = tenureMonths;
     final factor = pow(1 + r, n);
-    return principal * r * factor / (factor - 1);
+    final denominator = factor - 1;
+    if (denominator <= 0) return principal / tenureMonths;
+    return principal * r * factor / denominator;
   }
 
   /// Total amount payable over the entire tenure.

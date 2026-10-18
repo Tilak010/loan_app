@@ -66,6 +66,7 @@ class AuthProvider extends ChangeNotifier {
   /// Update user profile details.
   void updateUser(UserModel updatedUser) {
     _currentUser = updatedUser;
+    _isLoggedIn = true;
     notifyListeners();
   }
 

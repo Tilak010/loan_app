@@ -499,9 +499,17 @@ class _HomeScreenState extends State<HomeScreen> {
           buttonLabel: isHindi ? 'लोन देखें (Explore)' : 'Explore Loan',
           onExplore: () {
             final loanProvider = context.read<LoanProvider>();
+            loanProvider.setLoanType('Personal Loan');
             loanProvider.setPurpose('Personal Expense');
             loanProvider.setLoanAmount(50000);
-            Navigator.of(context).pushNamed(AppRoutes.loanAmount);
+            Navigator.of(context).pushNamed(
+              AppRoutes.loanAmount,
+              arguments: {
+                'loanType': 'Personal Loan',
+                'loanAmount': 50000.0,
+                'tenureMonths': 12,
+              },
+            );
           },
         ),
 
@@ -520,9 +528,17 @@ class _HomeScreenState extends State<HomeScreen> {
           buttonLabel: isHindi ? 'लोन देखें (Explore)' : 'Explore Loan',
           onExplore: () {
             final loanProvider = context.read<LoanProvider>();
+            loanProvider.setLoanType('Business Loan');
             loanProvider.setPurpose('Business');
             loanProvider.setLoanAmount(100000);
-            Navigator.of(context).pushNamed(AppRoutes.loanAmount);
+            Navigator.of(context).pushNamed(
+              AppRoutes.loanAmount,
+              arguments: {
+                'loanType': 'Business Loan',
+                'loanAmount': 100000.0,
+                'tenureMonths': 12,
+              },
+            );
           },
         ),
       ],
